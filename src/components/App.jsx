@@ -17,6 +17,20 @@ export class App extends Component {
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
   }
 
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem("contacts"));
+    if (contacts) {
+      this.setState(() => ({ contacts: contacts }));
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      const contacts = JSON.stringify(this.state.contacts);
+      localStorage.setItem("contacts", contacts);
+    }
+  }
+
   handleFormSubmit(event) {
     const existingContact = this.state.contacts.find(
       (contact) => contact.name === event.name
