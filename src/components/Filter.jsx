@@ -1,5 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
+import style from "./style.module.css";
 
 export class Filter extends Component {
   static propTypes = {
@@ -10,7 +11,7 @@ export class Filter extends Component {
   render() {
     return (
       <>
-        <label>Find contacts by name</label>
+        <label className={style.description}>Find contacts by name</label>
         <br />
         <input
           type="text"
@@ -18,6 +19,7 @@ export class Filter extends Component {
           value={this.props.value}
           onChange={this.props.onFilterChange}
           placeholder="Enter contact to search"
+          className={style.input}
         ></input>
       </>
     );

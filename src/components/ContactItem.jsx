@@ -1,5 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
+import style from "./style.module.css";
 
 export class ContactItem extends Component {
   static propTypes = {
@@ -11,10 +12,11 @@ export class ContactItem extends Component {
 
   render() {
     return (
-      <li>
+      <li className={style.contact_item}>
         {this.props.name} : {this.props.number}
         <button
           type="button"
+          className={style.delete_button}
           onClick={() => this.props.onDeleteContact(this.props.id)}
         >
           Delete
